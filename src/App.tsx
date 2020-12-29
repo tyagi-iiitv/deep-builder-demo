@@ -4,10 +4,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pages from "./pages";
 
+
 import './App.css';
 
 function App() {
-  return (<Router>
+  return (<Router> 
     <ToastContainer />
     <Pages />
   </Router>);

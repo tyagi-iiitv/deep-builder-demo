@@ -22,6 +22,8 @@ import { DiagramApplication, attachListenerToNode } from "../utils/playground"
 import ops from "../static/ops";
 import presets from "../static/presets.json";
 import { useHistory } from "react-router-dom";
+import * as menu from '../components/MenuBar';
+import {Navbar, Nav} from 'react-bootstrap';
 
 interface IModelBuilderComponentProps {
     
@@ -311,6 +313,30 @@ const ModelBuilder: React.FC<IModelBuilderComponentProps> = (props) => {
     }
     
     return <Container fluid>
+        <Navbar bg="dark" variant="dark" >
+            <Navbar.Brand style={{fontSize: 25, padding: '5 0'}}>One-Shot Search</Navbar.Brand>
+                <Nav className="mr-auto">
+                    {/* <menu.GetDropdown values={models}  selected={this.state.model} callbackFromChild={this.callbackFromChild}/>
+                    <menu.OptDropdown values={optimizers}  selected={this.state.optimizer} callbackFromChild={this.callbackFromChild}/>
+                    <menu.LossDropdown values={loss} selected={this.state.loss} callbackFromChild={this.callbackFromChild}/>
+                    <menu.DataDropdown values={datasets} selected={this.state.dataset} callbackFromChild={this.callbackFromChild}/> */}
+                    <menu.LoadDataset/>
+                    <menu.SaveModel/>
+                    <menu.LoadModel/>
+                    {/* <menu.GetSearchSpace callbackFromChild={this.callbackFromChild}/> */}
+                    <menu.GetAccuracyChart/>
+                    <menu.GetBlockInfoChart/>
+                    <menu.GetUnion/>
+                    <menu.GetIntersection/>
+                    <menu.GetCompliment/>
+                </Nav>
+                <Nav>
+                    <menu.TrainModel/>
+                    {/* <menu.StartSearch selected={this.state.startSearch} callbackFromChild={this.callbackFromChild}/> */}
+                    <menu.SearchModel/>
+                    {/* <menu.StartSearch selected={this.state.startSearch} callbackFromChild={this.callbackFromChild}/> */}
+                </Nav>
+        </Navbar>
         <PlaygroundWidget
             renderAvailableOps={() => <OpsWidget availableOps={ops} />} 
             renderAvailablePresets={() => <PresetWidget presets={presets} />}
